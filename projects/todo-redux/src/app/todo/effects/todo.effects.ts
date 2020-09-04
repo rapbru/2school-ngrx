@@ -47,12 +47,5 @@ export class TodoEffects {
     )
   );
 
-  modifiedAdd$: Observable<Action> = createEffect(() =>
-    this.actions$.pipe(
-      ofType(TodoActions.add),
-      map(({ toAdd }) => TodoActions.addModified({ id: toAdd.id }))
-    )
-  );
-
   constructor(private actions$: Actions, private todoService: TodoService) {}
 }
