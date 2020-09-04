@@ -1,0 +1,131 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {    
+    "todo-redux": {
+      "root": "projects/todo-redux/",
+      "sourceRoot": "projects/todo-redux/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "aot": true,
+            "outputPath": "dist/todo-redux",
+            "index": "projects/todo-redux/src/index.html",
+            "main": "projects/todo-redux/src/main.ts",
+            "polyfills": "projects/todo-redux/src/polyfills.ts",
+            "tsConfig": "projects/todo-redux/tsconfig.app.json",
+            "assets": [
+              "projects/todo-redux/src/favicon.png",
+              "projects/todo-redux/src/assets"
+            ],
+            "styles": [
+              "projects/todo-redux/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/todo-redux/src/environments/environment.ts",
+                  "with": "projects/todo-redux/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "todo-redux:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "todo-redux:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "todo-redux:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/todo-redux/src/test.ts",
+            "polyfills": "projects/todo-redux/src/polyfills.ts",
+            "tsConfig": "projects/todo-redux/tsconfig.spec.json",
+            "karmaConfig": "projects/todo-redux/karma.conf.js",
+            "styles": [
+              "projects/todo-redux/src/styles.scss"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/todo-redux/src/favicon.png",
+              "projects/todo-redux/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/todo-redux/tsconfig.app.json",
+              "projects/todo-redux/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "todo-redux-e2e": {
+      "root": "projects/todo-redux-e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/todo-redux-e2e/protractor.conf.js",
+            "devServerTarget": "todo-redux:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/todo-redux-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },    
+  "defaultProject": "todo-redux",
+  "cli": {
+    "analytics": false
+  }
+}

@@ -1,0 +1,8 @@
+<div class="content" fxLayout="column" fxLayoutGap="25px">
+    <h1>Todo example</h1>
+    <h2>Redux architecture</h2>
+
+    <!-- TODO: Listen to the add event -->
+    <todo-add></todo-add>
+    <todo-view [items]="todos | async" (reset)="onReset()" (checked)="onChecked($event)"></todo-view>
+</div>
