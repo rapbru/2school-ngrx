@@ -46,13 +46,13 @@ describe('TodoEffects', () => {
     });
   });
 
-  describe('modifiedAdd$', () => {
-    it('should invoke modified action', () => {
-      actions$ = of(TodoActions.add({ toAdd: todoItem }));
+  // describe('modifiedAdd$', () => {
+  //   it('should invoke modified action', () => {
+  //     actions$ = of(TodoActions.add({ toAdd: todoItem }));
 
-      effects.modifiedAdd$.subscribe((action: Action) => {
-        expect(action.type).toBe(TodoActions.addModified.type);
-      });
-    });
+  //     effects.modifiedAdd$.subscribe((action: Action) => {
+  //       expect(action.type).toBe(TodoActions.addModified.type);
+  //     });
+  //   });
   });
 });
