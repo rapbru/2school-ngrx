@@ -14,7 +14,7 @@ export class TodoListComponent {
   @Input()
   public title: string;
   @Output()
-  public reset = new EventEmitter<void>();
+  public resetList = new EventEmitter<void>();
   @Output()
   public checked = new EventEmitter<{ checked: boolean; id: number }>();
 

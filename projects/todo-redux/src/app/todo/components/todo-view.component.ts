@@ -9,7 +9,7 @@ export class TodoViewComponent {
     @Input()
     public items: TodoItem[];
     @Output()
-    public reset = new EventEmitter<void>();
+    public resetList = new EventEmitter<void>();
     @Output()
     public checked = new EventEmitter<{ checked: boolean; id: number }>();
 

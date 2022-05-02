@@ -16,7 +16,7 @@ describe('TodoEffects', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule],
-      providers: [TodoEffects, provideMockActions(() => actions$), TodoService]
+      providers: [TodoEffects, provideMockActions(() => actions$), TodoService],
     });
 
     effects = TestBed.inject(TodoEffects);
@@ -44,15 +44,5 @@ describe('TodoEffects', () => {
         expect(action.type).toBe(TodoActions.addModified.type);
       });
     });
-  });
-
-  // describe('modifiedAdd$', () => {
-  //   it('should invoke modified action', () => {
-  //     actions$ = of(TodoActions.add({ toAdd: todoItem }));
-
-  //     effects.modifiedAdd$.subscribe((action: Action) => {
-  //       expect(action.type).toBe(TodoActions.addModified.type);
-  //     });
-  //   });
   });
 });
