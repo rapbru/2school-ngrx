@@ -35,6 +35,9 @@ export class TodoComponent implements OnInit, OnDestroy {
   public ngOnDestroy() {}
 
   // TODO: Create add event handler which invokes a new action
+  public onAdd(newItem: TodoItem) {
+    this.store$.dispatch(TodoActions.add({toAdd: newItem}));
+  }
 
   public onReset(): void {
     this.store$.dispatch(TodoActions.reset());
