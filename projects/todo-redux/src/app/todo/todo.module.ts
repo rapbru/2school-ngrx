@@ -41,7 +41,7 @@ import { todoFeatureKey } from './reducers/todo.selector';
 @NgModule({
     imports: [CommonModule, FormsModule, ReactiveFormsModule, MatButtonModule, MatInputModule, MatSnackBarModule,
         MatCardModule, MatCheckboxModule, MatListModule, HttpClientModule, FlexLayoutModule, todoRoutesModule,
-        StoreModule.forFeature(todoFeatureKey, todoReducer), EffectsModule.forRoot([TodoEffects])],
+        StoreModule.forFeature(todoFeatureKey, todoReducer), EffectsModule.forFeature([TodoEffects])],
     declarations: [TodoAddComponent, TodoComponent, TodoListComponent, TodoViewComponent, TodoItemComponent],
     providers: [TodoService, ActionToasterService]
 })

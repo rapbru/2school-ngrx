@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoPreloading, RouterModule } from '@angular/router';
 import { ActionReducerMap, StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 // App is our top level component
@@ -31,6 +32,7 @@ export const defaultReducers: ActionReducerMap<any> = {
     MatSidenavModule,
     MatToolbarModule,
     StoreModule.forRoot(defaultReducers),
+    EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ logOnly: !environment.production }),
     RouterModule.forRoot(appRoutes, { useHash: false, preloadingStrategy: NoPreloading, enableTracing: true })],
 })
