@@ -6,7 +6,7 @@ import { TodoEffects } from './todo.effects';
 import { TodoActions } from '../actions';
 import { TodoService } from '../services/todo.service';
 import { TodoItem } from '../models/todo.types';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('TodoEffects', () => {
   let actions$: Observable<Action>;
@@ -15,9 +15,9 @@ describe('TodoEffects', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule],
-      providers: [TodoEffects, provideMockActions(() => actions$), TodoService],
-    });
+    imports: [],
+    providers: [TodoEffects, provideMockActions(() => actions$), TodoService, provideHttpClient(withInterceptorsFromDi())]
+});
 
     effects = TestBed.inject(TodoEffects);
   });
@@ -41,6 +41,16 @@ describe('TodoEffects', () => {
       actions$ = of(TodoActions.check({ id: 1, checked: true }));
 
       effects.modifiedCheck$.subscribe((action: Action) => {
+        expect(action.type).toBe(TodoActions.addModified.type);
+      });
+    });
+  });
+
+  describe('modifiedAdd$', () => {
+    it('should invoke modified action', () => {
+      actions$ = of(TodoActions.add({ toAdd: todoItem }));
+
+      effects.modifiedAdd$.subscribe((action: Action) => {
         expect(action.type).toBe(TodoActions.addModified.type);
       });
     });

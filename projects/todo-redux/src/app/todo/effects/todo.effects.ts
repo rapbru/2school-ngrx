@@ -26,7 +26,7 @@ import { TodoItem } from '../models/todo.types';
 
 @Injectable()
 export class TodoEffects {
-  load$: Observable<Action | {}> = createEffect(() =>
+  load$: Observable<Action | object> = createEffect(() =>
     this.actions$.pipe(
       ofType(TodoActions.load),
       switchMap(() => {
@@ -44,6 +44,13 @@ export class TodoEffects {
     this.actions$.pipe(
       ofType(TodoActions.check),
       map(({ id }) => TodoActions.addModified({ id }))
+    )
+  );
+
+  modifiedAdd$: Observable<Action> = createEffect(() =>
+    this.actions$.pipe(
+      ofType(TodoActions.add),
+      map(({ toAdd }) => TodoActions.addModified({ id: toAdd.id }))
     )
   );
 

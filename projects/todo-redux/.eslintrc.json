@@ -1,8 +1,5 @@
 {
   "extends": "../../.eslintrc.json",
-  "ignorePatterns": [
-    "!**/*"
-  ],
   "overrides": [
     {
       "files": [
@@ -20,7 +17,6 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "",
             "style": "camelCase"
           }
         ],
@@ -28,7 +24,6 @@
           "error",
           {
             "type": "element",
-            "prefix": "",
             "style": "kebab-case"
           }
         ]

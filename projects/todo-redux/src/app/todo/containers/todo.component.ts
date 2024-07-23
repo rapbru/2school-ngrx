@@ -10,11 +10,17 @@ import { TodoItem } from '../models/todo.types';
 import { TodoActions } from '../actions';
 import { TodoState } from '../reducers/todo.state';
 import { getTodos } from '../reducers/todo.selector';
+import { AsyncPipe } from '@angular/common';
+import { TodoViewComponent } from '../components/todo-view.component';
+import { TodoAddComponent } from '../components/todo-add.component';
+import { FlexModule } from '@ngbracket/ngx-layout/flex';
 
 @Component({
-  selector: 'todo-page',
-  templateUrl: './todo.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'todo-page',
+    templateUrl: './todo.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [FlexModule, TodoAddComponent, TodoViewComponent, AsyncPipe]
 })
 export class TodoComponent implements OnInit {
   public todos$: Observable<TodoItem[]>;
@@ -31,9 +37,8 @@ export class TodoComponent implements OnInit {
     this.actionToaster.start();
   }
 
-  // TODO: Create add event handler which invokes a new action
-  public onAdd(newItem: TodoItem) {
-
+  public onAdd(newItem: TodoItem): void {
+    this.store$.dispatch(TodoActions.add({ toAdd: newItem }));
   }
 
   public onReset(): void {

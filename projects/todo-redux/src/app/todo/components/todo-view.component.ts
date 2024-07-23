@@ -1,31 +1,35 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TodoItem } from '../models/todo.types';
+import { TodoListComponent } from './todo-list.component';
+import { FlexModule } from '@ngbracket/ngx-layout/flex';
 
 @Component({
     selector: 'todo-view',
-    templateUrl: './todo-view.component.html'
+    templateUrl: './todo-view.component.html',
+    standalone: true,
+    imports: [FlexModule, TodoListComponent]
 })
 export class TodoViewComponent {
-    @Input()
-    public items: TodoItem[];
-    @Output()
-    public resetList = new EventEmitter<void>();
-    @Output()
-    public checked = new EventEmitter<{ checked: boolean; id: number }>();
+  @Input()
+  public items: TodoItem[] | null | undefined;
+  @Output()
+  public resetItem = new EventEmitter<void>();
+  @Output()
+  public checked = new EventEmitter<{ checked: boolean; id: number }>();
 
-    public get itemsOpen(): TodoItem[] {
-        return this.filterCheckedBy(false);
-    }
+  public get itemsOpen(): TodoItem[] | undefined {
+      return this.filterCheckedBy(false);
+  }
 
-    public get itemsDone(): TodoItem[] {
-        return this.filterCheckedBy(true);
-    }
+  public get itemsDone(): TodoItem[] | undefined {
+      return this.filterCheckedBy(true);
+  }
 
-    private filterCheckedBy(checked: boolean): TodoItem[] {
-        if (this.items) {
-            return this.items.filter((item) => item.checked === checked);
-        }
+  private filterCheckedBy(checked: boolean): TodoItem[] | undefined {
+      if (this.items) {
+          return this.items.filter((item) => item.checked === checked);
+      }
 
-        return undefined;
-    }
+      return undefined;
+  }
 }

@@ -2,11 +2,12 @@ import { todoReducer, initialState } from './todo.reducer';
 import { TodoActions } from '../actions';
 import { TodoItem } from '../models/todo.types';
 import { TodoState } from './todo.state';
+import { Action } from '@ngrx/store';
 
 describe('TodoReducer', () => {
   describe('undefined action', () => {
     it('should return the default state', () => {
-      const action = {} as any;
+      const action = {} as Action;
 
       const result = todoReducer(undefined, action);
       expect(result.todos).toEqual([]);
@@ -55,27 +56,27 @@ describe('TodoReducer', () => {
     }
   });
 
-  // describe(TodoActions.add.name, () => {
-  //   it('should add todo', () => {
-  //     const origId = 1;
-  //     const todos = [createTodoItemBy(origId)];
-  //     const todosEdit = [createTodoItemBy(1), createTodoItemBy(2)];
+  describe(TodoActions.add.name, () => {
+    it('should add todo', () => {
+      const origId = 1;
+      const todos = [createTodoItemBy(origId)];
+      const todosEdit = [createTodoItemBy(1), createTodoItemBy(2)];
 
-  //     const testState = {
-  //       todos,
-  //       todosEdit
-  //     } as TodoState;
+      const testState = {
+        todos,
+        todosEdit
+      } as TodoState;
 
-  //     const toAddId = 3;
-  //     const addAction = TodoActions.add({ toAdd: createTodoItemBy(toAddId) });
-  //     const result = todoReducer(testState, addAction);
+      const toAddId = 3;
+      const addAction = TodoActions.add({ toAdd: createTodoItemBy(toAddId) });
+      const result = todoReducer(testState, addAction);
 
-  //     expect(testState.todosEdit).toBe(todosEdit);
-  //     expect(result.todosEdit.length).toBe(3);
-  //     expect(result.todosEdit[2].id).toBe(toAddId);
-  //     expect(result.todosEdit).not.toBe(todosEdit);
-  //   });
-  // });
+      expect(testState.todosEdit).toBe(todosEdit);
+      expect(result.todosEdit.length).toBe(3);
+      expect(result.todosEdit[2].id).toBe(toAddId);
+      expect(result.todosEdit).not.toBe(todosEdit);
+    });
+  });
 
   describe(TodoActions.addModified.name, () => {
     it('should update modified date', () => {

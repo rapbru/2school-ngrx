@@ -9,10 +9,9 @@ h2 {
     box-sizing: border-box;
 }
 
-/* TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
-mat-card-title {
-    font-weight: 500;
-    font-size: medium;
+button[mat-icon-button] {
+  background: transparent;
+  border: none;
 }
 
 mat-sidenav-container {
@@ -26,14 +25,6 @@ mat-sidenav-container {
         .mat-nav-list {
             padding: 0;
             border-bottom: 1 solid lightgray;
-            /* TODO(mdc-migration): The following rule targets internal classes of list that may no longer apply for the MDC version. */
-            /* TODO(mdc-migration): The following rule targets internal classes of list that may no longer apply for the MDC version. */
-            mat-list-item {
-                /* TODO(mdc-migration): The following rule targets internal classes of list that may no longer apply for the MDC version. */
-                .mat-list-item-content {
-                    color: black;
-                }
-            }
         }
         .menu {
             margin-top: 160px;
@@ -57,7 +48,7 @@ mat-sidenav-container {
                 z-index: 2;
                 top: 16px;
                 left: 268px;
-                font-size: 36px;
+                font-size: 24px;
                 cursor: pointer;
             }
         }
