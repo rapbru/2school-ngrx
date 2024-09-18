@@ -2,6 +2,7 @@
     <h1>Todo example</h1>
     <h2>Redux architecture</h2>
 
-    <todo-add (add)="onAdd($event)"></todo-add>
+    <!-- TODO add proper event binding -->
+    <todo-add></todo-add>
     <todo-view [items]="todos$ | async" (resetItem)="onReset()" (checked)="onChecked($event)"></todo-view>
 </div>

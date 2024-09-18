@@ -37,9 +37,7 @@ export class TodoComponent implements OnInit {
     this.actionToaster.start();
   }
 
-  public onAdd(newItem: TodoItem): void {
-    this.store$.dispatch(TodoActions.add({ toAdd: newItem }));
-  }
+  // TODO: Create add event handler which invokes a new action
 
   public onReset(): void {
     this.store$.dispatch(TodoActions.reset());
