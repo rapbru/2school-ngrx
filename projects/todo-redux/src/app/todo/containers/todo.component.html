@@ -3,6 +3,6 @@
     <h2>Redux architecture</h2>
 
     <!-- TODO add proper event binding -->
-    <todo-add></todo-add>
+    <todo-add (add)="onLoad($event)"></todo-add>
     <todo-view [items]="todos$ | async" (resetItem)="onReset()" (checked)="onChecked($event)"></todo-view>
 </div>

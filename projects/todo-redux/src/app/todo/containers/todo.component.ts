@@ -38,6 +38,9 @@ export class TodoComponent implements OnInit {
   }
 
   // TODO: Create add event handler which invokes a new action
+  public onLoad(todo: TodoItem): void {
+    this.store$.dispatch(TodoActions.add({ todo }));
+  }
 
   public onReset(): void {
     this.store$.dispatch(TodoActions.reset());
@@ -46,4 +49,5 @@ export class TodoComponent implements OnInit {
   public onChecked(payload: { id: number; checked: boolean }): void {
     this.store$.dispatch(TodoActions.check(payload));
   }
+
 }

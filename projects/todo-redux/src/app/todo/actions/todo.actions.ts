@@ -3,6 +3,7 @@ import { TodoItem } from '../models/todo.types';
 
 
 // TODO Create new Action which to add a new todo item
+export const add = createAction('[Todo] Add', props<{todo: TodoItem}>());
 export const load = createAction('[Todo] Load');
 export const loadComplete = createAction('[Todo] LoadCompleted', props<{items: TodoItem[]}>());
 export const check = createAction('[Todo] Check', props<{checked: boolean, id: number}>());

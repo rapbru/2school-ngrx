@@ -21,9 +21,10 @@ const reducer = createReducer(
     todosEdit: handleCheck(state, id, checked)
   })),
   // TODO create a new handler in case a todo is added
-  // on(TodoActions.add, (state, {toAdd}) => ({
-
-  // })),
+  on(TodoActions.add, (state, { todo }) => ({
+    ...state,
+    todosEdit: [...state.todosEdit, todo]
+  })),
   on(TodoActions.addModified, (state, { id }) => ({
     ...state,
     todosEdit: handleModified(state, id)
